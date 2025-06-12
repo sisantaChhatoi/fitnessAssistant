@@ -2,7 +2,7 @@ from django.db import models
 from objectiveArray import speciality
 # Create your models here.
 foodKind = [
-    ('VG','Vegetarian')
+    ('VG','Vegetarian'),
     ('NVG','Non - Vegetarian')
 ]
 
