@@ -16,6 +16,9 @@ class FoodItem(models.Model):
     objectiveType = models.CharField(max_length=5,choices=speciality)
     kind=models.CharField(max_length=5,choices=foodKind,default='VG')
 
+    def __str__(self):
+        return self.name
+
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
@@ -24,3 +27,5 @@ class Recipe(models.Model):
     kind=models.CharField(max_length=5,choices=foodKind)
     objectiveType = models.CharField(max_length=5,choices=speciality)
 
+    def __str__(self):
+        return self.name

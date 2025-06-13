@@ -11,15 +11,17 @@ class FoodItemAdmin(admin.ModelAdmin):
 
     list_filter = ('name','kind','objectiveType')
     list_ordered = ('calories',)
+    list_per_page = 10
 
     def foodPicture_view(self, obj):
         full_url = f"http://localhost:8000/media/{obj.foodPicture}"
-        return format_html('<img src="{}" height="250px" width="250px"/>', full_url)
+        return format_html('<img src="{}" height="250px" width="300px"/>', full_url)
 
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ('name','totalCalories','kind','objectiveType','recipeImage_view')
     list_filter = ('name','kind','objectiveType')
     list_ordered = ('calories',)
+    list_per_page = 10
 
     def recipeImage_view(self, obj):
         full_url = f"http://localhost:8000/media/{obj.recipeImage}"
