@@ -16,3 +16,9 @@ class Exercise(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Job(models.Model):
+    customer = models.ForeignKey(Exercise, on_delete=models.CASCADE,related_name='jobs_of_customer')
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE,related_name='jobs')
+    completed_at = models.DateTimeField(null=True, blank=True)
