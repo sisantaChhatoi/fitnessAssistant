@@ -10,15 +10,15 @@ class Plan(models.Model):
     objectiveType = models.CharField(max_length=5,choices=speciality)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE,related_name='plans')
     created_at = models.DateTimeField(auto_now_add=True)
-    completed_at = models.DateTimeField(null=True)
+    completed_at = models.DateTimeField(null=True,blank=True)
     duration_in_days = models.IntegerField(default=7)
     completion_count = models.IntegerField(default=0)
-    streak_count = models.IntegerField()
+    streak_count = models.IntegerField(default=0)
     completion_status = models.BooleanField(default=False)
 
 class GeneratedPerDayPlan(models.Model):
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE,related_name='GeneratedPerDayPlans')
-    day_no = models.IntegerField()
+    day_no = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True)
     exercises = models.ManyToManyField(Exercise)
