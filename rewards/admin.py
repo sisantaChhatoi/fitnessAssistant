@@ -21,7 +21,7 @@ class AchievementAdmin(admin.ModelAdmin):
 
     def achievementImage_view(self, obj):
         full_url = f"http://localhost:8000/media/{obj.achievementImage}"
-        return format_html('<img src="{full_url}" height="100px" width="100px"/>', full_url)
+        return format_html('<img src="{}" height="100px" width="100px"/>', full_url)
 
 
 
