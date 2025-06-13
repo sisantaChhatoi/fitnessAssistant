@@ -14,12 +14,17 @@ class Plan(models.Model):
     duration_in_days = models.IntegerField(default=7)
     completion_count = models.IntegerField(default=0)
     streak_count = models.IntegerField(default=0)
-    completion_status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return 'for ' + self.customer.user.username
 
 class GeneratedPerDayPlan(models.Model):
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE,related_name='GeneratedPerDayPlans')
     day_no = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    completed_at = models.DateTimeField(null=True)
+    completed_at = models.DateTimeField(null=True,blank=True)
     exercises = models.ManyToManyField(Exercise)
     completion_status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return 'for plan_' + self.plan+ 'for day: ' + self.day_no
