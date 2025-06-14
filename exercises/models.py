@@ -1,5 +1,6 @@
 from django.db import models
 from objectiveArray import speciality
+from customers.models import Customer
 # Create your models here.
 toughness_level_array = [
     ('H','Hard'),
@@ -19,6 +20,6 @@ class Exercise(models.Model):
 
 
 class Job(models.Model):
-    customer = models.ForeignKey(Exercise, on_delete=models.CASCADE,related_name='jobs_of_customer')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE,related_name='jobs_of_customer')
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE,related_name='jobs')
     completed_at = models.DateTimeField(null=True, blank=True)
