@@ -27,4 +27,4 @@ class GeneratedPerDayPlan(models.Model):
     completion_status = models.BooleanField(default=False)
 
     def __str__(self):
-        return 'for plan_' + self.plan+ 'for day: ' + self.day_no
+        return f'for plan_{self.plan.id} for day: {self.day_no}'
